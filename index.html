@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Subutai Salon Front Desk Demo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Newo.ai demo concept</p>
+            <h1>Subutai Salon Front Desk</h1>
+          </div>
+          <div class="status-pill">
+            <span class="pulse"></span>
+            AI receptionist online
+          </div>
+        </header>
+
+        <section class="hero-panel">
+          <div class="voice-visual" aria-label="Voice call visualization">
+            <div class="phone-ring"></div>
+            <div class="phone-card">
+              <span class="phone-icon">CALL</span>
+              <strong>Maple &amp; Main Studio</strong>
+              <span>Missed-call replacement workflow</span>
+            </div>
+            <div class="wave wave-a"></div>
+            <div class="wave wave-b"></div>
+            <div class="wave wave-c"></div>
+          </div>
+          <div class="hero-copy">
+            <h2>Capture high-intent calls, qualify the request, and show the owner the outcome.</h2>
+            <p>
+              This demo models an AI employee for a small salon: it answers calls, handles service questions, gathers booking details, escalates risky cases, and logs the estimated revenue protected.
+            </p>
+          </div>
+        </section>
+
+        <section class="controls-panel">
+          <div class="scenario-picker">
+            <label for="scenario">Scenario</label>
+            <select id="scenario"></select>
+          </div>
+          <button id="runScenario" type="button">Run Scenario</button>
+          <button id="resetDemo" class="secondary" type="button">Reset</button>
+        </section>
+
+        <section class="demo-grid">
+          <article class="call-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Live session</p>
+                <h3>Conversation</h3>
+              </div>
+              <span id="callState" class="tag">Idle</span>
+            </div>
+            <div id="transcript" class="transcript" aria-live="polite"></div>
+          </article>
+
+          <article class="summary-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Staff handoff</p>
+                <h3>Captured Outcome</h3>
+              </div>
+              <span id="leadValue" class="value">$0</span>
+            </div>
+            <dl class="lead-details">
+              <div><dt>Name</dt><dd id="leadName">-</dd></div>
+              <div><dt>Phone</dt><dd id="leadPhone">-</dd></div>
+              <div><dt>Intent</dt><dd id="leadIntent">-</dd></div>
+              <div><dt>Service</dt><dd id="leadService">-</dd></div>
+              <div><dt>Outcome</dt><dd id="leadOutcome">-</dd></div>
+              <div><dt>Next Action</dt><dd id="leadNext">-</dd></div>
+            </dl>
+          </article>
+        </section>
+
+        <section class="metrics-row">
+          <article>
+            <span id="capturedMetric">0</span>
+            <p>Captured leads</p>
+          </article>
+          <article>
+            <span id="bookedMetric">0</span>
+            <p>Appointment requests</p>
+          </article>
+          <article>
+            <span id="escalatedMetric">0</span>
+            <p>Human escalations</p>
+          </article>
+          <article>
+            <span id="revenueMetric">$0</span>
+            <p>Revenue protected</p>
+          </article>
+        </section>
+      </section>
+
+      <aside class="side-panel">
+        <section>
+          <p class="eyebrow">Platform mapping</p>
+          <h2>Newo Concepts</h2>
+          <ul class="concept-list">
+            <li><strong>Agent</strong><span>Salon receptionist persona and job role.</span></li>
+            <li><strong>AKB</strong><span>Services, pricing, hours, policies, and escalation rules.</span></li>
+            <li><strong>Flows</strong><span>Booking, FAQ, reschedule, complaint, and handoff paths.</span></li>
+            <li><strong>Skills</strong><span>Extract caller details, search knowledge, summarize session, send confirmation.</span></li>
+            <li><strong>Connectors</strong><span>Sandbox, web chat, voice, SMS, calendar, CRM/webhook.</span></li>
+            <li><strong>Analytics</strong><span>Lead value, outcome, call category, working-hours status.</span></li>
+          </ul>
+        </section>
+
+        <section class="akb-box">
+          <p class="eyebrow">AKB sample</p>
+          <h2>Business Rules</h2>
+          <div class="rule"><span>Full highlights</span><strong>$220+</strong></div>
+          <div class="rule"><span>Root touch-up</span><strong>$120+</strong></div>
+          <div class="rule"><span>Color correction</span><strong>Consult</strong></div>
+          <div class="rule"><span>Escalate</span><strong>Refunds, allergy, complaints</strong></div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
