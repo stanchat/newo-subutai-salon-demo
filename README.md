@@ -1,46 +1,39 @@
-# Subutai Salon Front Desk Demo
+# Subutai AI Voice Deployment Console
 
-A dependency-free browser demo for a Newo.ai-style AI receptionist workflow.
+A dependency-free browser demo that shows the platform layer behind a Newo.ai-style AI voice receptionist deployment.
 
-The demo models a small salon AI employee that:
+This is intentionally more than a chatbot demo. It demonstrates how Subutai could take an SMB opportunity from sales discovery through deployment, testing, go-live, and outcome reporting.
 
-- answers high-intent missed calls,
-- qualifies booking requests,
-- uses a small business knowledge base,
-- escalates risky cases,
-- logs a staff handoff summary,
-- estimates revenue protected.
+## What It Shows
+
+- Opportunity intake for an appointment-based SMB.
+- Vertical template selection.
+- Newo build mapping: agent, AKB, flows, skills, and connectors.
+- Integration blueprint for booking, CRM, SMS, handoff, and reporting.
+- QA test runner with realistic call scenarios.
+- Go-live checklist and readiness score.
+- Outcome dashboard with captured leads, appointments, escalations, and revenue protected.
+
+## Example Customer
+
+Business: Maple & Main Studio, a small salon.
+
+Problem: Staff miss calls while serving clients. Callers looking to book now become lost revenue when nobody answers.
+
+Current systems: Vagaro, SMS, CRM/marketing follow-up.
+
+## Why This Matters
+
+The demo is built around the FDE/platform role Subutai needs:
+
+1. Convert customer requirements into a repeatable deployment template.
+2. Map business workflow into Newo agent configuration.
+3. Define integration contracts and payloads.
+4. Test the deployment before go-live.
+5. Report outcomes in business terms.
 
 ## Run Locally
 
 Open `index.html` in a browser.
 
 No build step is required.
-
-## Demo Story
-
-Business: Maple & Main Studio, a small salon.
-
-Problem: Staff miss calls while serving clients. Callers looking to book now become lost revenue when nobody answers.
-
-AI employee mission:
-
-- capture caller name and phone,
-- identify intent and service,
-- answer pricing and policy questions from known business rules,
-- simulate booking against available slots,
-- escalate complaints, refunds, allergies, and color corrections,
-- produce a staff summary with next action and estimated lead value.
-
-## Newo Platform Mapping
-
-- Agent: salon receptionist persona and job role.
-- AKB: services, pricing, hours, policies, and escalation rules.
-- Flows: booking, FAQ, reschedule, complaint, and handoff paths.
-- Skills: detail extraction, knowledge lookup, summarization, confirmation.
-- Connectors: sandbox, web chat, voice, SMS, calendar, CRM/webhook.
-- Analytics: captured lead, appointment request, escalation, revenue protected.
-
-## Suggested Next Step
-
-Recreate this behavior in Newo Vibe Creator, then test in Sandbox before enabling voice.

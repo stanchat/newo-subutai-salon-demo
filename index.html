@@ -3,128 +3,305 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Subutai Salon Front Desk Demo</title>
+    <title>Subutai Deployment Console</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="app-shell">
-      <section class="workspace">
+    <main class="console-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <p class="eyebrow">Subutai platform demo</p>
+          <h1>AI Voice Deployment Console</h1>
+          <p>Turn an SMB sales conversation into a deployed Newo AI receptionist with repeatable workflow, QA, and outcome reporting.</p>
+        </div>
+
+        <nav class="step-nav" aria-label="Deployment stages">
+          <button class="nav-step active" data-view="intake" type="button"><span>01</span>Intake</button>
+          <button class="nav-step" data-view="template" type="button"><span>02</span>Template</button>
+          <button class="nav-step" data-view="build" type="button"><span>03</span>Newo Build</button>
+          <button class="nav-step" data-view="integrations" type="button"><span>04</span>Integrations</button>
+          <button class="nav-step" data-view="qa" type="button"><span>05</span>QA</button>
+          <button class="nav-step" data-view="golive" type="button"><span>06</span>Go-Live</button>
+          <button class="nav-step" data-view="outcomes" type="button"><span>07</span>Outcomes</button>
+        </nav>
+
+        <section class="sidebar-card">
+          <p class="eyebrow">Current deployment</p>
+          <h2>Maple &amp; Main Studio</h2>
+          <div class="mini-stat"><span>Vertical</span><strong>Appointment SMB</strong></div>
+          <div class="mini-stat"><span>System</span><strong>Vagaro + CRM + SMS</strong></div>
+          <div class="mini-stat"><span>Readiness</span><strong id="readinessMini">72%</strong></div>
+        </section>
+      </aside>
+
+      <section class="main-stage">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Newo.ai demo concept</p>
-            <h1>Subutai Salon Front Desk</h1>
+            <p class="eyebrow">FDE platform view</p>
+            <h2 id="viewTitle">Opportunity Intake</h2>
           </div>
-          <div class="status-pill">
-            <span class="pulse"></span>
-            AI receptionist online
+          <div class="top-actions">
+            <span class="status-pill"><span class="pulse"></span>Demo workspace</span>
+            <button id="exportBrief" type="button">Copy Brief</button>
           </div>
         </header>
 
-        <section class="hero-panel">
-          <div class="voice-visual" aria-label="Voice call visualization">
-            <div class="phone-ring"></div>
-            <div class="phone-card">
-              <span class="phone-icon">CALL</span>
-              <strong>Maple &amp; Main Studio</strong>
-              <span>Missed-call replacement workflow</span>
-            </div>
-            <div class="wave wave-a"></div>
-            <div class="wave wave-b"></div>
-            <div class="wave wave-c"></div>
-          </div>
-          <div class="hero-copy">
-            <h2>Capture high-intent calls, qualify the request, and show the owner the outcome.</h2>
-            <p>
-              This demo models an AI employee for a small salon: it answers calls, handles service questions, gathers booking details, escalates risky cases, and logs the estimated revenue protected.
-            </p>
-          </div>
-        </section>
-
-        <section class="controls-panel">
-          <div class="scenario-picker">
-            <label for="scenario">Scenario</label>
-            <select id="scenario"></select>
-          </div>
-          <button id="runScenario" type="button">Run Scenario</button>
-          <button id="resetDemo" class="secondary" type="button">Reset</button>
-        </section>
-
-        <section class="demo-grid">
-          <article class="call-panel">
-            <div class="panel-heading">
-              <div>
-                <p class="eyebrow">Live session</p>
-                <h3>Conversation</h3>
-              </div>
-              <span id="callState" class="tag">Idle</span>
-            </div>
-            <div id="transcript" class="transcript" aria-live="polite"></div>
-          </article>
-
-          <article class="summary-panel">
-            <div class="panel-heading">
-              <div>
-                <p class="eyebrow">Staff handoff</p>
-                <h3>Captured Outcome</h3>
-              </div>
-              <span id="leadValue" class="value">$0</span>
-            </div>
-            <dl class="lead-details">
-              <div><dt>Name</dt><dd id="leadName">-</dd></div>
-              <div><dt>Phone</dt><dd id="leadPhone">-</dd></div>
-              <div><dt>Intent</dt><dd id="leadIntent">-</dd></div>
-              <div><dt>Service</dt><dd id="leadService">-</dd></div>
-              <div><dt>Outcome</dt><dd id="leadOutcome">-</dd></div>
-              <div><dt>Next Action</dt><dd id="leadNext">-</dd></div>
-            </dl>
-          </article>
-        </section>
-
-        <section class="metrics-row">
+        <section class="summary-strip">
           <article>
-            <span id="capturedMetric">0</span>
-            <p>Captured leads</p>
+            <span id="pipelineStage">Intake</span>
+            <p>Deployment stage</p>
           </article>
           <article>
-            <span id="bookedMetric">0</span>
-            <p>Appointment requests</p>
+            <span id="readinessScore">72%</span>
+            <p>Go-live readiness</p>
           </article>
           <article>
-            <span id="escalatedMetric">0</span>
-            <p>Human escalations</p>
-          </article>
-          <article>
-            <span id="revenueMetric">$0</span>
+            <span id="revenueProtected">$0</span>
             <p>Revenue protected</p>
+          </article>
+          <article>
+            <span id="qaPassed">5/8</span>
+            <p>QA checks passing</p>
+          </article>
+        </section>
+
+        <section class="view active" id="intake">
+          <div class="section-heading">
+            <p class="eyebrow">Sales to solution</p>
+            <h3>Opportunity Intake</h3>
+            <p>Capture the business facts Subutai needs before anyone builds an agent.</p>
+          </div>
+          <div class="two-column">
+            <article class="panel">
+              <h4>Customer Snapshot</h4>
+              <dl class="detail-grid">
+                <div><dt>Business</dt><dd>Maple &amp; Main Studio</dd></div>
+                <div><dt>Vertical</dt><dd>Salon / appointment-based SMB</dd></div>
+                <div><dt>Primary pain</dt><dd>Missed calls while stylists are with clients</dd></div>
+                <div><dt>Current tools</dt><dd>Vagaro, Mailchimp, Google Business Profile</dd></div>
+                <div><dt>Average lead value</dt><dd>$75-$220 per appointment request</dd></div>
+                <div><dt>Success metric</dt><dd>More booked requests, fewer missed high-intent calls</dd></div>
+              </dl>
+            </article>
+            <article class="panel">
+              <h4>Discovery Checklist</h4>
+              <ul class="check-list">
+                <li class="done">Services, durations, and starting prices collected</li>
+                <li class="done">Business hours and after-hours behavior captured</li>
+                <li class="done">Escalation rules for complaints and color correction defined</li>
+                <li class="done">Booking system identified as Vagaro</li>
+                <li>Production API access confirmed</li>
+                <li>Call forwarding number confirmed</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="template">
+          <div class="section-heading">
+            <p class="eyebrow">Repeatable asset</p>
+            <h3>Vertical Template Selection</h3>
+            <p>The salon use case is packaged as one instance of a reusable appointment-business template.</p>
+          </div>
+          <div class="template-grid">
+            <article class="template-card selected">
+              <span>Selected</span>
+              <h4>Appointment-Based SMB</h4>
+              <p>Salon, med spa, barber shop, dental, auto service, wellness.</p>
+              <ul>
+                <li>Booking request capture</li>
+                <li>Service/pricing FAQ</li>
+                <li>Human handoff and escalation</li>
+                <li>CRM and SMS follow-up</li>
+              </ul>
+            </article>
+            <article class="template-card">
+              <span>Next vertical</span>
+              <h4>Emergency Service</h4>
+              <p>HVAC, plumbing, restoration, roadside support.</p>
+              <ul>
+                <li>Urgency triage</li>
+                <li>Dispatch routing</li>
+                <li>Location capture</li>
+                <li>After-hours premium handling</li>
+              </ul>
+            </article>
+            <article class="template-card">
+              <span>Later</span>
+              <h4>Restaurant Host</h4>
+              <p>Reservations, hours, catering, private event requests.</p>
+              <ul>
+                <li>Reservation intake</li>
+                <li>Menu/hours answers</li>
+                <li>Event lead capture</li>
+                <li>Manager handoff</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="build">
+          <div class="section-heading">
+            <p class="eyebrow">Newo deployment plan</p>
+            <h3>Agent, AKB, Flows, Skills</h3>
+            <p>Show exactly how the business workflow maps into a Newo build.</p>
+          </div>
+          <div class="build-map">
+            <article class="panel">
+              <h4>Agent Persona</h4>
+              <p>Friendly, concise salon front desk AI employee. It answers missed calls, captures appointments, and avoids inventing pricing or availability.</p>
+            </article>
+            <article class="panel">
+              <h4>Active Knowledge Base</h4>
+              <p>Services, durations, prices, hours, policies, cancellation rules, escalation triggers, stylist options, confirmation copy.</p>
+            </article>
+            <article class="panel">
+              <h4>Flows</h4>
+              <p>Book appointment, pricing FAQ, reschedule/cancel, after-hours capture, complaint/refund escalation, session-ended reporting.</p>
+            </article>
+            <article class="panel">
+              <h4>Skills</h4>
+              <p>Extract contact info, classify intent, select appointment slot, create booking payload, create CRM lead, send SMS, create staff summary.</p>
+            </article>
+          </div>
+          <article class="panel prompt-panel">
+            <h4>Vibe Creator Build Prompt</h4>
+            <pre id="vibePrompt"></pre>
+          </article>
+        </section>
+
+        <section class="view" id="integrations">
+          <div class="section-heading">
+            <p class="eyebrow">Connector blueprint</p>
+            <h3>Integration Mapping</h3>
+            <p>Simulated payloads demonstrate the contract between the AI employee and business systems.</p>
+          </div>
+          <div class="integration-grid">
+            <article class="panel">
+              <h4>Connector Plan</h4>
+              <ul class="connector-list">
+                <li><strong>Voice</strong><span>Inbound phone routing to Newo voice agent</span></li>
+                <li><strong>Vagaro</strong><span>Availability lookup and booking creation</span></li>
+                <li><strong>SMS</strong><span>Customer confirmation and staff alert</span></li>
+                <li><strong>CRM</strong><span>Lead record for future marketing</span></li>
+                <li><strong>Webhook</strong><span>Session summary to Subutai outcome dashboard</span></li>
+              </ul>
+            </article>
+            <article class="panel">
+              <h4>Payload Preview</h4>
+              <div class="payload-tabs">
+                <button class="payload-tab active" data-payload="booking" type="button">Booking</button>
+                <button class="payload-tab" data-payload="crm" type="button">CRM</button>
+                <button class="payload-tab" data-payload="sms" type="button">SMS</button>
+                <button class="payload-tab" data-payload="handoff" type="button">Handoff</button>
+              </div>
+              <pre id="payloadPreview"></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="qa">
+          <div class="section-heading">
+            <p class="eyebrow">Before go-live</p>
+            <h3>QA Test Runner</h3>
+            <p>Run demo call scenarios and track whether the deployment is launch-ready.</p>
+          </div>
+          <div class="qa-grid">
+            <article class="panel call-panel">
+              <div class="call-controls">
+                <div>
+                  <label for="scenario">Test scenario</label>
+                  <select id="scenario"></select>
+                </div>
+                <button id="runScenario" type="button">Run Call</button>
+                <button id="resetDemo" class="secondary" type="button">Reset Metrics</button>
+              </div>
+              <div class="panel-heading">
+                <h4>Live Transcript</h4>
+                <span id="callState" class="tag">Idle</span>
+              </div>
+              <div id="transcript" class="transcript" aria-live="polite"></div>
+            </article>
+            <article class="panel">
+              <h4>Captured Session</h4>
+              <dl class="lead-details">
+                <div><dt>Name</dt><dd id="leadName">-</dd></div>
+                <div><dt>Phone</dt><dd id="leadPhone">-</dd></div>
+                <div><dt>Intent</dt><dd id="leadIntent">-</dd></div>
+                <div><dt>Service</dt><dd id="leadService">-</dd></div>
+                <div><dt>Outcome</dt><dd id="leadOutcome">-</dd></div>
+                <div><dt>Next Action</dt><dd id="leadNext">-</dd></div>
+                <div><dt>Lead Value</dt><dd id="leadValue">$0</dd></div>
+              </dl>
+            </article>
+          </div>
+          <article class="panel">
+            <h4>Required Test Pack</h4>
+            <ul id="qaChecklist" class="check-list split"></ul>
+          </article>
+        </section>
+
+        <section class="view" id="golive">
+          <div class="section-heading">
+            <p class="eyebrow">Launch control</p>
+            <h3>Go-Live Readiness</h3>
+            <p>Subutai should not launch until phone, fallback, staff, and reporting steps are complete.</p>
+          </div>
+          <div class="go-grid">
+            <article class="panel">
+              <h4>Launch Checklist</h4>
+              <ul class="check-list">
+                <li class="done">Customer approved persona and escalation policy</li>
+                <li class="done">Sandbox call scenarios passed</li>
+                <li class="done">Staff summary format approved</li>
+                <li class="done">Outcome dashboard target fields defined</li>
+                <li>Vagaro production credentials configured</li>
+                <li>Phone forwarding test completed</li>
+                <li>Fallback phone number confirmed</li>
+                <li>First 7-day tuning meeting scheduled</li>
+              </ul>
+            </article>
+            <article class="panel readiness-panel">
+              <h4>Readiness Score</h4>
+              <div class="score-ring"><span id="readinessRing">72%</span></div>
+              <p>Ready for controlled pilot once production booking credentials and phone routing are confirmed.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="outcomes">
+          <div class="section-heading">
+            <p class="eyebrow">Proof layer</p>
+            <h3>Outcome Report</h3>
+            <p>This is the owner-facing proof that the deployment is protecting revenue.</p>
+          </div>
+          <div class="outcome-grid">
+            <article>
+              <span id="capturedMetric">0</span>
+              <p>Captured leads</p>
+            </article>
+            <article>
+              <span id="bookedMetric">0</span>
+              <p>Appointment requests</p>
+            </article>
+            <article>
+              <span id="escalatedMetric">0</span>
+              <p>Human escalations</p>
+            </article>
+            <article>
+              <span id="revenueMetric">$0</span>
+              <p>Revenue protected</p>
+            </article>
+          </div>
+          <article class="panel">
+            <h4>Owner Summary</h4>
+            <p id="ownerSummary">Run QA call scenarios to populate outcome reporting. This is where Subutai proves that the AI receptionist captured high-intent demand instead of letting it roll to voicemail.</p>
           </article>
         </section>
       </section>
-
-      <aside class="side-panel">
-        <section>
-          <p class="eyebrow">Platform mapping</p>
-          <h2>Newo Concepts</h2>
-          <ul class="concept-list">
-            <li><strong>Agent</strong><span>Salon receptionist persona and job role.</span></li>
-            <li><strong>AKB</strong><span>Services, pricing, hours, policies, and escalation rules.</span></li>
-            <li><strong>Flows</strong><span>Booking, FAQ, reschedule, complaint, and handoff paths.</span></li>
-            <li><strong>Skills</strong><span>Extract caller details, search knowledge, summarize session, send confirmation.</span></li>
-            <li><strong>Connectors</strong><span>Sandbox, web chat, voice, SMS, calendar, CRM/webhook.</span></li>
-            <li><strong>Analytics</strong><span>Lead value, outcome, call category, working-hours status.</span></li>
-          </ul>
-        </section>
-
-        <section class="akb-box">
-          <p class="eyebrow">AKB sample</p>
-          <h2>Business Rules</h2>
-          <div class="rule"><span>Full highlights</span><strong>$220+</strong></div>
-          <div class="rule"><span>Root touch-up</span><strong>$120+</strong></div>
-          <div class="rule"><span>Color correction</span><strong>Consult</strong></div>
-          <div class="rule"><span>Escalate</span><strong>Refunds, allergy, complaints</strong></div>
-        </section>
-      </aside>
     </main>
 
+    <div id="toast" class="toast" role="status" aria-live="polite">Brief copied</div>
     <script src="app.js"></script>
   </body>
 </html>

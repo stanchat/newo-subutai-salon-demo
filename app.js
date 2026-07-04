@@ -1,6 +1,79 @@
+const views = {
+  intake: "Opportunity Intake",
+  template: "Vertical Template Selection",
+  build: "Newo Build Plan",
+  integrations: "Integration Mapping",
+  qa: "QA Test Runner",
+  golive: "Go-Live Readiness",
+  outcomes: "Outcome Report"
+};
+
+const qaItems = [
+  { label: "Booking request captures name, phone, service, and preferred time", done: true },
+  { label: "Pricing answers come from AKB instead of invented values", done: true },
+  { label: "Color correction routes to consultation/human review", done: true },
+  { label: "Complaint/refund path escalates without overpromising", done: true },
+  { label: "Session-ended staff summary is structured", done: true },
+  { label: "Production booking credentials verified", done: false },
+  { label: "Inbound phone routing tested end to end", done: false },
+  { label: "Fallback human number confirmed", done: false }
+];
+
+const vibePrompt = `Create an AI employee for Maple & Main Studio, a salon using Vagaro.
+
+Mission:
+- Answer missed calls and web chats.
+- Capture caller name, phone, requested service, preferred time, stylist preference, and urgency.
+- Answer only from the salon knowledge base for prices, policies, hours, and availability.
+- Simulate or create booking requests in Vagaro.
+- Send confirmation by SMS.
+- Create a CRM lead for marketing follow-up.
+- Escalate complaints, refunds, allergy/medical issues, bridal parties, and color corrections.
+- End every session with a structured staff summary and estimated revenue protected.
+
+Use the Appointment-Based SMB template:
+- booking flow
+- pricing FAQ flow
+- reschedule/cancel flow
+- complaint escalation flow
+- session-ended reporting flow`;
+
+const payloads = {
+  booking: {
+    system: "Vagaro",
+    action: "create_booking_request",
+    customer: { name: "Monica Ray", phone: "+17735550142", new_client: true },
+    service: { name: "Full highlights", duration_minutes: 150, estimated_value: 220 },
+    requested_slot: { date: "2026-07-10", time: "15:00", stylist: "Lena" },
+    status: "pending_confirmation"
+  },
+  crm: {
+    system: "CRM",
+    action: "upsert_lead",
+    source: "Subutai AI receptionist",
+    contact: { name: "Monica Ray", phone: "+17735550142" },
+    tags: ["voice-ai", "full-highlights", "high-intent"],
+    next_action: "Send color service nurture sequence"
+  },
+  sms: {
+    system: "SMS",
+    action: "send_confirmation",
+    to: "+17735550142",
+    body: "Maple & Main received your request for full highlights with Lena on Friday at 3:00 PM. We will confirm shortly."
+  },
+  handoff: {
+    system: "Subutai outcome dashboard",
+    action: "staff_handoff",
+    priority: "normal",
+    summary: "New full highlights request captured. Estimated value $220. Confirmation required in Vagaro.",
+    owner_next_step: "Confirm or offer alternate time"
+  }
+};
+
 const scenarios = [
   {
     title: "New haircut booking",
+    qa: "Booking capture",
     lead: {
       name: "Tanya Ellis",
       phone: "(312) 555-0188",
@@ -24,6 +97,7 @@ const scenarios = [
   },
   {
     title: "High-value color lead",
+    qa: "Revenue protection",
     lead: {
       name: "Monica Ray",
       phone: "(773) 555-0142",
@@ -47,6 +121,7 @@ const scenarios = [
   },
   {
     title: "Color correction escalation",
+    qa: "Escalation boundary",
     lead: {
       name: "Ari Lopez",
       phone: "(708) 555-0199",
@@ -70,6 +145,7 @@ const scenarios = [
   },
   {
     title: "Complaint and refund",
+    qa: "Refund guardrail",
     lead: {
       name: "Denise Carter",
       phone: "(224) 555-0116",
@@ -102,6 +178,13 @@ const state = {
 };
 
 const els = {
+  viewTitle: document.querySelector("#viewTitle"),
+  pipelineStage: document.querySelector("#pipelineStage"),
+  readinessScore: document.querySelector("#readinessScore"),
+  readinessMini: document.querySelector("#readinessMini"),
+  readinessRing: document.querySelector("#readinessRing"),
+  qaPassed: document.querySelector("#qaPassed"),
+  revenueProtected: document.querySelector("#revenueProtected"),
   scenario: document.querySelector("#scenario"),
   runScenario: document.querySelector("#runScenario"),
   resetDemo: document.querySelector("#resetDemo"),
@@ -117,11 +200,35 @@ const els = {
   capturedMetric: document.querySelector("#capturedMetric"),
   bookedMetric: document.querySelector("#bookedMetric"),
   escalatedMetric: document.querySelector("#escalatedMetric"),
-  revenueMetric: document.querySelector("#revenueMetric")
+  revenueMetric: document.querySelector("#revenueMetric"),
+  ownerSummary: document.querySelector("#ownerSummary"),
+  qaChecklist: document.querySelector("#qaChecklist"),
+  payloadPreview: document.querySelector("#payloadPreview"),
+  vibePrompt: document.querySelector("#vibePrompt"),
+  exportBrief: document.querySelector("#exportBrief"),
+  toast: document.querySelector("#toast")
 };
 
 function money(value) {
   return `$${value.toLocaleString()}`;
+}
+
+function setView(view) {
+  document.querySelectorAll(".view").forEach((section) => {
+    section.classList.toggle("active", section.id === view);
+  });
+  document.querySelectorAll(".nav-step").forEach((button) => {
+    button.classList.toggle("active", button.dataset.view === view);
+  });
+  els.viewTitle.textContent = views[view];
+  els.pipelineStage.textContent = views[view].replace("Opportunity ", "").replace(" Selection", "");
+}
+
+function setPayload(key) {
+  document.querySelectorAll(".payload-tab").forEach((button) => {
+    button.classList.toggle("active", button.dataset.payload === key);
+  });
+  els.payloadPreview.textContent = JSON.stringify(payloads[key], null, 2);
 }
 
 function addBubble(role, text) {
@@ -143,10 +250,20 @@ function renderLead(lead) {
 }
 
 function updateMetrics() {
+  const passed = qaItems.filter((item) => item.done).length;
+  const readiness = Math.round((passed / qaItems.length) * 100);
   els.capturedMetric.textContent = state.captured;
   els.bookedMetric.textContent = state.booked;
   els.escalatedMetric.textContent = state.escalated;
   els.revenueMetric.textContent = money(state.revenue);
+  els.revenueProtected.textContent = money(state.revenue);
+  els.qaPassed.textContent = `${passed}/${qaItems.length}`;
+  els.readinessScore.textContent = `${readiness}%`;
+  els.readinessMini.textContent = `${readiness}%`;
+  els.readinessRing.textContent = `${readiness}%`;
+  els.ownerSummary.textContent = state.captured
+    ? `${state.captured} lead(s) captured, ${state.booked} appointment request(s), ${state.escalated} escalation(s), and ${money(state.revenue)} in estimated revenue protected during QA simulation.`
+    : "Run QA call scenarios to populate outcome reporting. This is where Subutai proves that the AI receptionist captured high-intent demand instead of letting it roll to voicemail.";
 }
 
 function clearTranscript() {
@@ -171,10 +288,11 @@ function resetLead() {
 function runScenario() {
   clearTranscript();
   resetLead();
+  setView("qa");
 
   const scenario = scenarios[Number(els.scenario.value)];
   let index = 0;
-  els.callState.textContent = "In call";
+  els.callState.textContent = scenario.qa;
   els.runScenario.disabled = true;
 
   state.timer = setInterval(() => {
@@ -194,7 +312,7 @@ function runScenario() {
       els.callState.textContent = "Logged";
       els.runScenario.disabled = false;
     }
-  }, 650);
+  }, 620);
 }
 
 function resetDemo() {
@@ -208,6 +326,47 @@ function resetDemo() {
   els.runScenario.disabled = false;
 }
 
+function renderChecklist() {
+  els.qaChecklist.innerHTML = "";
+  qaItems.forEach((item) => {
+    const li = document.createElement("li");
+    li.className = item.done ? "done" : "";
+    li.textContent = item.label;
+    els.qaChecklist.appendChild(li);
+  });
+}
+
+function copyBrief() {
+  const brief = `Subutai Deployment Console Demo
+
+Positioning:
+This demo shows how Subutai can turn an SMB opportunity into a repeatable Newo AI voice receptionist deployment.
+
+Workflow:
+1. Intake business, tools, pain, lead value, and success metrics.
+2. Select a vertical template.
+3. Map the customer workflow to Newo agent, AKB, flows, skills, and connectors.
+4. Define integration payloads for booking, CRM, SMS, and handoff.
+5. Run QA scenarios before go-live.
+6. Track readiness and outcome reporting.
+
+Current customer example:
+Maple & Main Studio, an appointment-based salon using Vagaro.`;
+
+  navigator.clipboard?.writeText(brief).then(() => {
+    els.toast.classList.add("show");
+    setTimeout(() => els.toast.classList.remove("show"), 1400);
+  });
+}
+
+document.querySelectorAll(".nav-step").forEach((button) => {
+  button.addEventListener("click", () => setView(button.dataset.view));
+});
+
+document.querySelectorAll(".payload-tab").forEach((button) => {
+  button.addEventListener("click", () => setPayload(button.dataset.payload));
+});
+
 scenarios.forEach((scenario, index) => {
   const option = document.createElement("option");
   option.value = index;
@@ -215,6 +374,10 @@ scenarios.forEach((scenario, index) => {
   els.scenario.appendChild(option);
 });
 
+els.vibePrompt.textContent = vibePrompt;
+els.exportBrief.addEventListener("click", copyBrief);
 els.runScenario.addEventListener("click", runScenario);
 els.resetDemo.addEventListener("click", resetDemo);
+renderChecklist();
+setPayload("booking");
 resetDemo();
