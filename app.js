@@ -127,26 +127,28 @@ document.querySelectorAll(".segmented button").forEach((button) => {
 });
 
 document.querySelector("#runTrustTest").addEventListener("click", (event) => {
+  const button = event.currentTarget;
   const result = document.querySelector("#testResult");
-  event.currentTarget.disabled = true;
+  button.disabled = true;
   result.className = "test-result running";
   result.textContent = "Running 8 customer-trust scenarios...";
   window.setTimeout(() => {
     result.className = "test-result passed";
     result.innerHTML = "<strong>7 of 8 passed</strong><span>Provider outage fallback needs review before pilot.</span>";
-    event.currentTarget.disabled = false;
+    button.disabled = false;
   }, 1100);
 });
 
 document.querySelector("#simulateFailover").addEventListener("click", (event) => {
+  const button = event.currentTarget;
   const result = document.querySelector("#failoverResult");
-  event.currentTarget.disabled = true;
+  button.disabled = true;
   result.className = "test-result running";
   result.textContent = "Testing continuity contract...";
   window.setTimeout(() => {
     result.className = "test-result passed";
     result.innerHTML = "<strong>Core intake preserved</strong><span>Voice routing can move to fallback; booking becomes manager-confirmed.</span>";
-    event.currentTarget.disabled = false;
+    button.disabled = false;
   }, 1100);
 });
 
