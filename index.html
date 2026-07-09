@@ -3,305 +3,134 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Subutai Deployment Console</title>
+    <meta name="description" content="A working concept for Subutai's trust-centered SMB AI delivery network.">
+    <title>Subutai Network OS</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="console-shell">
+    <div class="app-shell">
       <aside class="sidebar">
-        <div class="brand-block">
-          <p class="eyebrow">Subutai platform demo</p>
-          <h1>AI Voice Deployment Console</h1>
-          <p>Turn an SMB sales conversation into a deployed Newo AI receptionist with repeatable workflow, QA, and outcome reporting.</p>
-        </div>
-
-        <nav class="step-nav" aria-label="Deployment stages">
-          <button class="nav-step active" data-view="intake" type="button"><span>01</span>Intake</button>
-          <button class="nav-step" data-view="template" type="button"><span>02</span>Template</button>
-          <button class="nav-step" data-view="build" type="button"><span>03</span>Newo Build</button>
-          <button class="nav-step" data-view="integrations" type="button"><span>04</span>Integrations</button>
-          <button class="nav-step" data-view="qa" type="button"><span>05</span>QA</button>
-          <button class="nav-step" data-view="golive" type="button"><span>06</span>Go-Live</button>
-          <button class="nav-step" data-view="outcomes" type="button"><span>07</span>Outcomes</button>
+        <div class="brand"><span class="brand-mark">S</span><div><strong>Subutai</strong><span>Network OS concept</span></div></div>
+        <nav aria-label="Workspace">
+          <button class="nav-item active" data-view="network" type="button"><span class="nav-icon">01</span>Network</button>
+          <button class="nav-item" data-view="deployment" type="button"><span class="nav-icon">02</span>Deployment</button>
+          <button class="nav-item" data-view="library" type="button"><span class="nav-icon">03</span>Asset library</button>
+          <button class="nav-item" data-view="ledger" type="button"><span class="nav-icon">04</span>Value ledger</button>
+          <button class="nav-item" data-view="partners" type="button"><span class="nav-icon">05</span>Solution partners</button>
         </nav>
-
-        <section class="sidebar-card">
-          <p class="eyebrow">Current deployment</p>
-          <h2>Maple &amp; Main Studio</h2>
-          <div class="mini-stat"><span>Vertical</span><strong>Appointment SMB</strong></div>
-          <div class="mini-stat"><span>System</span><strong>Vagaro + CRM + SMS</strong></div>
-          <div class="mini-stat"><span>Readiness</span><strong id="readinessMini">72%</strong></div>
-        </section>
+        <div class="sidebar-note"><span>Operating principle</span><p>Reward verified customer value and reusable work, not seats filled or tasks completed.</p></div>
       </aside>
 
-      <section class="main-stage">
+      <main>
         <header class="topbar">
-          <div>
-            <p class="eyebrow">FDE platform view</p>
-            <h2 id="viewTitle">Opportunity Intake</h2>
-          </div>
-          <div class="top-actions">
-            <span class="status-pill"><span class="pulse"></span>Demo workspace</span>
-            <button id="exportBrief" type="button">Copy Brief</button>
-          </div>
+          <div><p class="eyebrow">Trust-centered AI delivery</p><h1 id="pageTitle">Network overview</h1></div>
+          <div class="top-actions"><span class="live-status"><i></i>Concept workspace</span><button class="button secondary" id="copyVision" type="button">Copy vision brief</button></div>
         </header>
 
-        <section class="summary-strip">
-          <article>
-            <span id="pipelineStage">Intake</span>
-            <p>Deployment stage</p>
-          </article>
-          <article>
-            <span id="readinessScore">72%</span>
-            <p>Go-live readiness</p>
-          </article>
-          <article>
-            <span id="revenueProtected">$0</span>
-            <p>Revenue protected</p>
-          </article>
-          <article>
-            <span id="qaPassed">5/8</span>
-            <p>QA checks passing</p>
-          </article>
+        <section class="view active" id="network">
+          <div class="intro">
+            <div><p class="eyebrow">One network, three doors</p><h2>Local trust in. Verified outcomes out.</h2><p>Subutai connects community advisors, independent builders, and vetted AI providers around one accountable delivery system for Main Street businesses.</p></div>
+            <div class="principle"><span>North star</span><strong>Earn and keep trust</strong><p>Transparent recommendations, low-risk pilots, visible outcomes, and no unnecessary services.</p></div>
+          </div>
+
+          <div class="network-map">
+            <article class="actor customer">
+              <div class="actor-heading"><span>Customer</span><b>01</b></div>
+              <h3>Maple &amp; Main Studio</h3>
+              <p>A family-owned salon losing high-intent calls while staff serve clients.</p>
+              <dl><div><dt>Trusted advisor</dt><dd>Maya, local partner</dd></div><div><dt>Desired outcome</dt><dd>Recover missed bookings</dd></div><div><dt>Risk model</dt><dd>Controlled pilot</dd></div></dl>
+            </article>
+            <div class="flow-arrow" aria-hidden="true">→</div>
+            <article class="actor hub">
+              <div class="actor-heading"><span>Subutai standard</span><b>02</b></div>
+              <h3>Trust and delivery layer</h3>
+              <ul class="compact-list"><li>Discovery and outcome contract</li><li>Certified deployment method</li><li>Reusable, versioned assets</li><li>QA and provider fallback</li><li>Attribution and payout ledger</li></ul>
+            </article>
+            <div class="flow-arrow" aria-hidden="true">→</div>
+            <article class="actor provider">
+              <div class="actor-heading"><span>Solution partner</span><b>03</b></div>
+              <h3>Newo AI</h3>
+              <p>Primary white-label voice platform, selected for fit rather than treated as the product.</p>
+              <dl><div><dt>Fit score</dt><dd>92 / 100</dd></div><div><dt>Certification</dt><dd>Level A + B</dd></div><div><dt>Fallback</dt><dd>Provider benchmark ready</dd></div></dl>
+            </article>
+          </div>
+
+          <div class="metric-row"><article><span>4</span><p>Active launch partners</p></article><article><span>12</span><p>Certified collaborators</p></article><article><span>8</span><p>Reusable deployment assets</p></article><article><span>$9.4k</span><p>Verified value this month</p></article></div>
+
+          <section class="work-queue">
+            <div class="section-title"><div><p class="eyebrow">Opt-in project board</p><h2>Available work</h2></div><span>Quality-gated</span></div>
+            <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Outcome</th><th>Vertical</th><th>Complexity</th><th>Est. reward</th><th>Status</th></tr></thead><tbody>
+              <tr><td>Horizon HVAC</td><td>Recover after-hours calls</td><td>Home services</td><td>Standard</td><td>$600 + residual</td><td><button class="text-button claim" type="button">Review project</button></td></tr>
+              <tr><td>Oak Street Dental</td><td>Qualify new patients</td><td>Healthcare</td><td>Advanced</td><td>$950 + residual</td><td><span class="tag">Matched</span></td></tr>
+              <tr><td>Maple &amp; Main</td><td>Capture missed bookings</td><td>Beauty</td><td>Standard</td><td>$480 + residual</td><td><span class="tag success">In QA</span></td></tr>
+            </tbody></table></div>
+          </section>
         </section>
 
-        <section class="view active" id="intake">
-          <div class="section-heading">
-            <p class="eyebrow">Sales to solution</p>
-            <h3>Opportunity Intake</h3>
-            <p>Capture the business facts Subutai needs before anyone builds an agent.</p>
-          </div>
-          <div class="two-column">
-            <article class="panel">
-              <h4>Customer Snapshot</h4>
-              <dl class="detail-grid">
-                <div><dt>Business</dt><dd>Maple &amp; Main Studio</dd></div>
-                <div><dt>Vertical</dt><dd>Salon / appointment-based SMB</dd></div>
-                <div><dt>Primary pain</dt><dd>Missed calls while stylists are with clients</dd></div>
-                <div><dt>Current tools</dt><dd>Vagaro, Mailchimp, Google Business Profile</dd></div>
-                <div><dt>Average lead value</dt><dd>$75-$220 per appointment request</dd></div>
-                <div><dt>Success metric</dt><dd>More booked requests, fewer missed high-intent calls</dd></div>
-              </dl>
+        <section class="view" id="deployment">
+          <div class="section-title"><div><p class="eyebrow">Customer workspace / SD-1042</p><h2>Maple &amp; Main Studio</h2><p>Every deployment begins with a measurable outcome, then moves through a standard quality gate.</p></div><span class="tag success">Controlled pilot</span></div>
+          <div class="deployment-layout">
+            <section class="pipeline">
+              <button class="stage complete" data-stage="discovery" type="button"><i>✓</i><span>Discovery<small>Outcome defined</small></span></button>
+              <button class="stage complete" data-stage="design" type="button"><i>✓</i><span>Design<small>Template selected</small></span></button>
+              <button class="stage active" data-stage="build" type="button"><i>3</i><span>Build &amp; integrate<small>Newo configuration</small></span></button>
+              <button class="stage" data-stage="qa" type="button"><i>4</i><span>Trust QA<small>8 required scenarios</small></span></button>
+              <button class="stage" data-stage="pilot" type="button"><i>5</i><span>Pilot<small>7-day observation</small></span></button>
+              <button class="stage" data-stage="verify" type="button"><i>6</i><span>Verify value<small>Owner sign-off</small></span></button>
+            </section>
+            <article class="workspace-panel" id="stagePanel">
+              <div class="panel-header"><div><p class="eyebrow">Current gate</p><h3 id="stageTitle">Build &amp; integrate</h3></div><span id="stageOwner">Owner: Stanley</span></div>
+              <p id="stageDescription"></p><div class="task-list" id="stageTasks"></div>
             </article>
-            <article class="panel">
-              <h4>Discovery Checklist</h4>
-              <ul class="check-list">
-                <li class="done">Services, durations, and starting prices collected</li>
-                <li class="done">Business hours and after-hours behavior captured</li>
-                <li class="done">Escalation rules for complaints and color correction defined</li>
-                <li class="done">Booking system identified as Vagaro</li>
-                <li>Production API access confirmed</li>
-                <li>Call forwarding number confirmed</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="view" id="template">
-          <div class="section-heading">
-            <p class="eyebrow">Repeatable asset</p>
-            <h3>Vertical Template Selection</h3>
-            <p>The salon use case is packaged as one instance of a reusable appointment-business template.</p>
-          </div>
-          <div class="template-grid">
-            <article class="template-card selected">
-              <span>Selected</span>
-              <h4>Appointment-Based SMB</h4>
-              <p>Salon, med spa, barber shop, dental, auto service, wellness.</p>
-              <ul>
-                <li>Booking request capture</li>
-                <li>Service/pricing FAQ</li>
-                <li>Human handoff and escalation</li>
-                <li>CRM and SMS follow-up</li>
-              </ul>
-            </article>
-            <article class="template-card">
-              <span>Next vertical</span>
-              <h4>Emergency Service</h4>
-              <p>HVAC, plumbing, restoration, roadside support.</p>
-              <ul>
-                <li>Urgency triage</li>
-                <li>Dispatch routing</li>
-                <li>Location capture</li>
-                <li>After-hours premium handling</li>
-              </ul>
-            </article>
-            <article class="template-card">
-              <span>Later</span>
-              <h4>Restaurant Host</h4>
-              <p>Reservations, hours, catering, private event requests.</p>
-              <ul>
-                <li>Reservation intake</li>
-                <li>Menu/hours answers</li>
-                <li>Event lead capture</li>
-                <li>Manager handoff</li>
-              </ul>
-            </article>
+            <aside class="outcome-contract">
+              <p class="eyebrow">Outcome contract</p><h3>Recover qualified demand</h3>
+              <dl><div><dt>Baseline</dt><dd>31% of calls missed</dd></div><div><dt>Target</dt><dd>80% captured after hours</dd></div><div><dt>Proof</dt><dd>Booked or accepted lead</dd></div><div><dt>Customer cap</dt><dd>$900 / month</dd></div><div><dt>Pilot risk</dt><dd>No setup fee</dd></div></dl>
+              <button class="button primary" id="runTrustTest" type="button">Run trust test</button><div class="test-result" id="testResult" aria-live="polite"></div>
+            </aside>
           </div>
         </section>
 
-        <section class="view" id="build">
-          <div class="section-heading">
-            <p class="eyebrow">Newo deployment plan</p>
-            <h3>Agent, AKB, Flows, Skills</h3>
-            <p>Show exactly how the business workflow maps into a Newo build.</p>
+        <section class="view" id="library">
+          <div class="section-title">
+            <div><p class="eyebrow">Reusable work marketplace</p><h2>Deployment asset library</h2><p>Contributors keep improving assets because usage, quality, and verified value continue to generate rewards.</p></div>
+            <div class="segmented" aria-label="Asset filters"><button class="active" data-filter="all" type="button">All</button><button data-filter="template" type="button">Templates</button><button data-filter="skill" type="button">Skills</button><button data-filter="qa" type="button">QA packs</button></div>
           </div>
-          <div class="build-map">
-            <article class="panel">
-              <h4>Agent Persona</h4>
-              <p>Friendly, concise salon front desk AI employee. It answers missed calls, captures appointments, and avoids inventing pricing or availability.</p>
-            </article>
-            <article class="panel">
-              <h4>Active Knowledge Base</h4>
-              <p>Services, durations, prices, hours, policies, cancellation rules, escalation triggers, stylist options, confirmation copy.</p>
-            </article>
-            <article class="panel">
-              <h4>Flows</h4>
-              <p>Book appointment, pricing FAQ, reschedule/cancel, after-hours capture, complaint/refund escalation, session-ended reporting.</p>
-            </article>
-            <article class="panel">
-              <h4>Skills</h4>
-              <p>Extract contact info, classify intent, select appointment slot, create booking payload, create CRM lead, send SMS, create staff summary.</p>
-            </article>
-          </div>
-          <article class="panel prompt-panel">
-            <h4>Vibe Creator Build Prompt</h4>
-            <pre id="vibePrompt"></pre>
-          </article>
-        </section>
-
-        <section class="view" id="integrations">
-          <div class="section-heading">
-            <p class="eyebrow">Connector blueprint</p>
-            <h3>Integration Mapping</h3>
-            <p>Simulated payloads demonstrate the contract between the AI employee and business systems.</p>
-          </div>
-          <div class="integration-grid">
-            <article class="panel">
-              <h4>Connector Plan</h4>
-              <ul class="connector-list">
-                <li><strong>Voice</strong><span>Inbound phone routing to Newo voice agent</span></li>
-                <li><strong>Vagaro</strong><span>Availability lookup and booking creation</span></li>
-                <li><strong>SMS</strong><span>Customer confirmation and staff alert</span></li>
-                <li><strong>CRM</strong><span>Lead record for future marketing</span></li>
-                <li><strong>Webhook</strong><span>Session summary to Subutai outcome dashboard</span></li>
-              </ul>
-            </article>
-            <article class="panel">
-              <h4>Payload Preview</h4>
-              <div class="payload-tabs">
-                <button class="payload-tab active" data-payload="booking" type="button">Booking</button>
-                <button class="payload-tab" data-payload="crm" type="button">CRM</button>
-                <button class="payload-tab" data-payload="sms" type="button">SMS</button>
-                <button class="payload-tab" data-payload="handoff" type="button">Handoff</button>
-              </div>
-              <pre id="payloadPreview"></pre>
-            </article>
+          <div class="asset-grid" id="assetGrid">
+            <article class="asset" data-kind="template"><div class="asset-top"><span class="asset-type">Template</span><span class="quality">98% pass</span></div><h3>Appointment SMB Core</h3><p>Booking capture, FAQ, SMS confirmation, escalation, and session reporting.</p><div class="asset-meta"><span>42 deployments</span><span>v2.4</span><span>Newo certified</span></div><div class="asset-footer"><span>Created by Stanley C.</span><strong>$1,840 earned</strong></div></article>
+            <article class="asset" data-kind="skill"><div class="asset-top"><span class="asset-type">Skill</span><span class="quality">96% pass</span></div><h3>After-Hours Lead Recovery</h3><p>Captures urgency, location, contact data, and dispatch readiness without overpromising.</p><div class="asset-meta"><span>68 deployments</span><span>v3.1</span><span>Provider neutral</span></div><div class="asset-footer"><span>Created by Priya N.</span><strong>$2,720 earned</strong></div></article>
+            <article class="asset" data-kind="qa"><div class="asset-top"><span class="asset-type">QA pack</span><span class="quality">100% current</span></div><h3>Trust Boundary Tests</h3><p>Pricing uncertainty, refund requests, urgent cases, privacy, fallback, and human escalation.</p><div class="asset-meta"><span>31 deployments</span><span>v1.8</span><span>Subutai standard</span></div><div class="asset-footer"><span>Created by Quality Guild</span><strong>$930 earned</strong></div></article>
+            <article class="asset" data-kind="template"><div class="asset-top"><span class="asset-type">Template</span><span class="quality">94% pass</span></div><h3>Home Services Dispatch</h3><p>Emergency triage, service area checks, dispatch handoff, and after-hours pricing rules.</p><div class="asset-meta"><span>17 deployments</span><span>v1.6</span><span>Pilot</span></div><div class="asset-footer"><span>Created by Marco R.</span><strong>$710 earned</strong></div></article>
           </div>
         </section>
 
-        <section class="view" id="qa">
-          <div class="section-heading">
-            <p class="eyebrow">Before go-live</p>
-            <h3>QA Test Runner</h3>
-            <p>Run demo call scenarios and track whether the deployment is launch-ready.</p>
-          </div>
-          <div class="qa-grid">
-            <article class="panel call-panel">
-              <div class="call-controls">
-                <div>
-                  <label for="scenario">Test scenario</label>
-                  <select id="scenario"></select>
-                </div>
-                <button id="runScenario" type="button">Run Call</button>
-                <button id="resetDemo" class="secondary" type="button">Reset Metrics</button>
-              </div>
-              <div class="panel-heading">
-                <h4>Live Transcript</h4>
-                <span id="callState" class="tag">Idle</span>
-              </div>
-              <div id="transcript" class="transcript" aria-live="polite"></div>
-            </article>
-            <article class="panel">
-              <h4>Captured Session</h4>
-              <dl class="lead-details">
-                <div><dt>Name</dt><dd id="leadName">-</dd></div>
-                <div><dt>Phone</dt><dd id="leadPhone">-</dd></div>
-                <div><dt>Intent</dt><dd id="leadIntent">-</dd></div>
-                <div><dt>Service</dt><dd id="leadService">-</dd></div>
-                <div><dt>Outcome</dt><dd id="leadOutcome">-</dd></div>
-                <div><dt>Next Action</dt><dd id="leadNext">-</dd></div>
-                <div><dt>Lead Value</dt><dd id="leadValue">$0</dd></div>
-              </dl>
-            </article>
-          </div>
-          <article class="panel">
-            <h4>Required Test Pack</h4>
-            <ul id="qaChecklist" class="check-list split"></ul>
-          </article>
-        </section>
-
-        <section class="view" id="golive">
-          <div class="section-heading">
-            <p class="eyebrow">Launch control</p>
-            <h3>Go-Live Readiness</h3>
-            <p>Subutai should not launch until phone, fallback, staff, and reporting steps are complete.</p>
-          </div>
-          <div class="go-grid">
-            <article class="panel">
-              <h4>Launch Checklist</h4>
-              <ul class="check-list">
-                <li class="done">Customer approved persona and escalation policy</li>
-                <li class="done">Sandbox call scenarios passed</li>
-                <li class="done">Staff summary format approved</li>
-                <li class="done">Outcome dashboard target fields defined</li>
-                <li>Vagaro production credentials configured</li>
-                <li>Phone forwarding test completed</li>
-                <li>Fallback phone number confirmed</li>
-                <li>First 7-day tuning meeting scheduled</li>
-              </ul>
-            </article>
-            <article class="panel readiness-panel">
-              <h4>Readiness Score</h4>
-              <div class="score-ring"><span id="readinessRing">72%</span></div>
-              <p>Ready for controlled pilot once production booking credentials and phone routing are confirmed.</p>
-            </article>
+        <section class="view" id="ledger">
+          <div class="section-title"><div><p class="eyebrow">Transparent attribution</p><h2>Verified value ledger</h2><p>Every payout traces back to a customer-approved outcome and the people or assets that helped create it.</p></div><span class="tag">Illustrative economics</span></div>
+          <div class="ledger-summary"><article><p>Verified customer value</p><strong>$9,420</strong><small>+18% from prior month</small></article><article><p>Collaborator pool</p><strong>$3,110</strong><small>33% distributed</small></article><article><p>Residual rewards</p><strong>$1,260</strong><small>From reused assets</small></article><article><p>Disputed outcomes</p><strong>0</strong><small>All records auditable</small></article></div>
+          <div class="ledger-layout">
+            <section class="ledger-list"><div class="table-wrap"><table><thead><tr><th>Verified event</th><th>Customer value</th><th>Attribution</th><th>Pool</th></tr></thead><tbody>
+              <tr><td><strong>Booked color consultation</strong><small>Maple &amp; Main · Jul 08</small></td><td>$220</td><td>Advisor + template + FDE</td><td>$73</td></tr>
+              <tr><td><strong>Emergency HVAC lead accepted</strong><small>Horizon HVAC · Jul 08</small></td><td>$480</td><td>Advisor + skill + FDE</td><td>$158</td></tr>
+              <tr><td><strong>New patient call qualified</strong><small>Oak Street Dental · Jul 07</small></td><td>$310</td><td>Advisor + template</td><td>$102</td></tr>
+              <tr><td><strong>After-hours booking recovered</strong><small>Maple &amp; Main · Jul 07</small></td><td>$95</td><td>Template + QA pack</td><td>$31</td></tr>
+            </tbody></table></div></section>
+            <aside class="payout-card"><p class="eyebrow">Selected payout</p><h3>$73 collaborator pool</h3><div class="payout-line"><span>Maya · trusted advisor</span><strong>$29</strong></div><div class="payout-bar"><i style="width:40%"></i></div><div class="payout-line"><span>Stanley · deployment FDE</span><strong>$33</strong></div><div class="payout-bar"><i style="width:45%"></i></div><div class="payout-line"><span>Appointment template royalty</span><strong>$11</strong></div><div class="payout-bar"><i style="width:15%"></i></div><p class="fine-print">Released after the business confirms the appointment as accepted. Rules and evidence remain visible to every contributor.</p></aside>
           </div>
         </section>
 
-        <section class="view" id="outcomes">
-          <div class="section-heading">
-            <p class="eyebrow">Proof layer</p>
-            <h3>Outcome Report</h3>
-            <p>This is the owner-facing proof that the deployment is protecting revenue.</p>
+        <section class="view" id="partners">
+          <div class="section-title"><div><p class="eyebrow">Provider-neutral architecture</p><h2>Solution partner registry</h2><p>Subutai recommends the best fit for each business and keeps migration paths ready so no single vendor owns the customer relationship.</p></div><span class="tag success">Primary healthy</span></div>
+          <div class="partner-layout">
+            <section class="partner-list">
+              <article class="partner-card selected"><div class="partner-rank">Primary</div><div><h3>Newo AI</h3><p>White-label voice deployment · SMB workflows</p></div><div class="score"><strong>92</strong><span>Fit score</span></div></article>
+              <article class="partner-card"><div class="partner-rank">Benchmark</div><div><h3>Provider B</h3><p>Voice automation · broader connector catalog</p></div><div class="score"><strong>84</strong><span>Fit score</span></div></article>
+              <article class="partner-card"><div class="partner-rank">Fallback</div><div><h3>Open runtime</h3><p>Core call capture · reduced fidelity continuity</p></div><div class="score"><strong>71</strong><span>Fit score</span></div></article>
+            </section>
+            <aside class="comparison"><p class="eyebrow">Advisor recommendation</p><h3>Why Newo for this customer</h3><ul class="compact-list"><li>Strong appointment workflow coverage</li><li>White-label customer experience</li><li>Documented builder and certification path</li><li>Wholesale economics support outcome pricing</li></ul><h4>Known tradeoffs</h4><ul class="compact-list warning"><li>Single-provider dependency today</li><li>Booking connector requires validation</li><li>Migration contract is still in design</li></ul><button class="button primary" id="simulateFailover" type="button">Simulate provider failover</button><div class="test-result" id="failoverResult" aria-live="polite"></div></aside>
           </div>
-          <div class="outcome-grid">
-            <article>
-              <span id="capturedMetric">0</span>
-              <p>Captured leads</p>
-            </article>
-            <article>
-              <span id="bookedMetric">0</span>
-              <p>Appointment requests</p>
-            </article>
-            <article>
-              <span id="escalatedMetric">0</span>
-              <p>Human escalations</p>
-            </article>
-            <article>
-              <span id="revenueMetric">$0</span>
-              <p>Revenue protected</p>
-            </article>
-          </div>
-          <article class="panel">
-            <h4>Owner Summary</h4>
-            <p id="ownerSummary">Run QA call scenarios to populate outcome reporting. This is where Subutai proves that the AI receptionist captured high-intent demand instead of letting it roll to voicemail.</p>
-          </article>
         </section>
-      </section>
-    </main>
-
-    <div id="toast" class="toast" role="status" aria-live="polite">Brief copied</div>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
   </body>
 </html>

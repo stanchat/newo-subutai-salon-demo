@@ -1,39 +1,20 @@
-# Subutai AI Voice Deployment Console
+# Subutai Network OS
 
-A dependency-free browser demo that shows the platform layer behind a Newo.ai-style AI voice receptionist deployment.
-
-This is intentionally more than a chatbot demo. It demonstrates how Subutai could take an SMB opportunity from sales discovery through deployment, testing, go-live, and outcome reporting.
+An interactive concept for the trust-centered, multi-partner SMB AI ecosystem discussed by Stanley Chatman and James on July 8, 2026.
 
 ## What It Shows
 
-- Opportunity intake for an appointment-based SMB.
-- Vertical template selection.
-- Newo build mapping: agent, AKB, flows, skills, and connectors.
-- Integration blueprint for booking, CRM, SMS, handoff, and reporting.
-- QA test runner with realistic call scenarios.
-- Go-live checklist and readiness score.
-- Outcome dashboard with captured leads, appointments, escalations, and revenue protected.
+- A three-sided network connecting SMB customers, collaborators, and solution partners.
+- A deployment path from discovery through customer-verified value.
+- An opt-in project board for independent advisors and engineers.
+- Reusable templates, skills, and QA packs with residual creator rewards.
+- An auditable ledger for outcome-based collaborator payouts.
+- Provider comparison, certification, and failover planning.
 
-## Example Customer
-
-Business: Maple & Main Studio, a small salon.
-
-Problem: Staff miss calls while serving clients. Callers looking to book now become lost revenue when nobody answers.
-
-Current systems: Vagaro, SMS, CRM/marketing follow-up.
-
-## Why This Matters
-
-The demo is built around the FDE/platform role Subutai needs:
-
-1. Convert customer requirements into a repeatable deployment template.
-2. Map business workflow into Newo agent configuration.
-3. Define integration contracts and payloads.
-4. Test the deployment before go-live.
-5. Report outcomes in business terms.
+The salon remains one example deployment. The product concept is the operating system around it: transparent discovery, certified delivery, trust QA, reusable work, provider choice, outcome verification, and fair attribution.
 
 ## Run Locally
 
-Open `index.html` in a browser.
+Open `index.html` in a browser. No build step is required.
 
-No build step is required.
+Customer records, economics, providers, quality scores, and outcome events are illustrative rather than live production data.
